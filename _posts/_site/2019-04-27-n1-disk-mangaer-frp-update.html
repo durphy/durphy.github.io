@@ -1,0 +1,192 @@
+<h1 id="升级-frp">升级 FRP</h1>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># SSH 登陆到 N1 小钢炮</span>
+
+<span class="c"># 备份原来的 frp 客户端</span>
+<span class="nb">mv</span> /usr/local/apps/frp frpBaking
+
+<span class="c"># 下载 0.27 版本的 frp 客户端</span>
+<span class="nb">cd</span> ~
+wget https://github.com/fatedier/frp/releases/download/v0.27.0/frp_0.27.0_linux_arm64.tar.gz
+<span class="c"># 解压</span>
+<span class="nb">tar</span> <span class="nt">-zxvf</span> frp_0.27.0_linux_arm64.tar.gz
+<span class="c"># 将 frpc 移动到 /usr/local/apps/frp 下</span>
+<span class="nb">mkdir</span> /usr/local/apps/frp
+<span class="nb">cd </span>frp_0.27.0_linux_arm64/
+<span class="nb">mv </span>frpc /usr/local/apps/frp
+<span class="c"># 赋予权限</span>
+<span class="nb">chmod </span>755 /usr/local/apps/frp
+<span class="nb">chmod </span>755 /usr/local/apps/frp/frpc
+
+<span class="c"># 删除不需要的文件</span>
+<span class="nb">rm</span> <span class="nt">-rf</span> ~/frp_0.27.0_linux_arm64
+<span class="nb">rm</span> ~/frp_0.27.0_linux_arm64.tar.gz
+
+<span class="c"># 重启小钢炮</span>
+</code></pre></div></div>
+
+<!--more-->
+
+<h1 id="frp-服务器配置">FRP 服务器配置</h1>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># frps 配置 (以下 YOUR_xxx_HERE 的地方需要自行填写，其它项根据自己的需求调整)</span>
+<span class="c"># by 荒野无灯 @date 2018-07-29</span>
+
+<span class="o">[</span>common]
+<span class="c"># frps 监听地址</span>
+bind_addr <span class="o">=</span> 0.0.0.0
+<span class="c"># frps 监听端口 （frpc端通过这个端口与frps通信），默认7000</span>
+bind_port <span class="o">=</span> 7000
+
+<span class="c"># udp port 主要用于udp打洞穿透nat，默认 7001</span>
+bind_udp_port <span class="o">=</span> 7001
+
+<span class="c"># udp port used for kcp protocol, it can be same with 'bind_port'</span>
+<span class="c"># if not set, kcp is disabled in frps</span>
+<span class="c"># 用于kcp协议的udp端口，可以与bind_port相同</span>
+<span class="c"># 如果这一项没有设置，则kcp协议不会启用</span>
+<span class="c"># kcp_bind_port = 7000</span>
+
+<span class="c"># 代理监听地址, 默认与bind_addr相同</span>
+<span class="c"># proxy_bind_addr = 127.0.0.1</span>
+
+<span class="c"># 这两个配置是分别给http和https 类型的tunnel用的</span>
+<span class="c"># 注： 如有需要，这两项的值可与bind_port相同</span>
+vhost_http_port <span class="o">=</span> 8081
+vhost_https_port <span class="o">=</span> 8443
+
+<span class="c"># frps控制面板的监听地址和端口</span>
+<span class="c"># dashboard_addr的默认值与bind_addr相同</span>
+dashboard_addr <span class="o">=</span> 0.0.0.0
+<span class="c"># 若不设置dashboard_port，则控制面板不会启用</span>
+dashboard_port <span class="o">=</span> 7500
+
+<span class="c"># frps控制面板 登录用户名, 若不设置，则默认为admin</span>
+dashboard_user <span class="o">=</span> admin
+<span class="c"># frps控制面板 用户密码, 若不设置，则默认为admin</span>
+dashboard_pwd <span class="o">=</span> YOUR_PASSWD_HERE
+
+<span class="c"># dashboard assets directory(only for debug mode)</span>
+<span class="c"># assets_dir = ./assets/static</span>
+
+<span class="c"># 日志文件路径，其值可为 console 或 文件路径</span>
+log_file <span class="o">=</span> /var/log/frps.log
+
+<span class="c"># 日志级别，可选的值有 trace, debug, info, warn, error</span>
+<span class="c"># 日常使用建议设置为info, warn, error三者之一</span>
+log_level <span class="o">=</span> info
+
+<span class="c"># 日志保留天数</span>
+log_max_days <span class="o">=</span> 7
+
+<span class="c"># auth token, frpc客户端填写时需要与这个一样</span>
+token <span class="o">=</span> YOUR_TOKEN_HERE
+
+<span class="c"># 心跳发送间隔，不建议修改默认值（默认是10)</span>
+<span class="c"># heartbeat_interval = 10</span>
+<span class="c"># 心跳超时设置，不建议修改默认值（默认是90)</span>
+<span class="c"># heartbeat_timeout = 90</span>
+
+<span class="c"># 允许客户端绑定的端口，如果留空，表示没有任何限制</span>
+privilege_allow_ports <span class="o">=</span> 2000-3000,3001,3003,4000-50000
+
+<span class="c"># pool_count in each proxy will change to max_pool_count if they exceed the maximum value</span>
+max_pool_count <span class="o">=</span> 5
+
+<span class="c"># max ports can be used for each client, default value is 0 means no limit</span>
+max_ports_per_client <span class="o">=</span> 0
+
+<span class="c"># authentication_timeout means the timeout interval (seconds) when the frpc connects frps</span>
+<span class="c"># if authentication_timeout is zero, the time is not verified, default is 900s</span>
+authentication_timeout <span class="o">=</span> 900
+
+<span class="c"># 配置http或https类型的tunnel时需要这个</span>
+<span class="c"># 假设这里填写的是 p4davan.80x86.io , 客户端那边的subdomain值是test,</span>
+<span class="c"># 那么最终访问的域名是: test.p4davan.80x86.io</span>
+subdomain_host <span class="o">=</span> YOUR_DOMAIN_HERE
+
+<span class="c"># 是否开启tcp stream multiplexing, 注意客户端这个项的值要与这里一致</span>
+tcp_mux <span class="o">=</span> <span class="nb">true</span>
+</code></pre></div></div>
+
+<h1 id="安装-screen-和-rclone">安装 screen 和 rclone</h1>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># N1 小钢炮不能通过 apt-get install 安装</span>
+<span class="c"># 从 Debian 软件包下载对应的 .deb 包，然后拆包之后手动安装即可 </span>
+<span class="c"># 下载文件</span>
+wget https://streamelody.github.io/assets/attachment/n1_screen_rclone/screen
+wget https://streamelody.github.io/assets/attachment/n1_screen_rclone/rclone
+wget https://streamelody.github.io/assets/attachment/n1_screen_rclone/libcap-ng.so.0
+wget https://streamelody.github.io/assets/attachment/n1_screen_rclone/libtinfo.so.5
+wget https://streamelody.github.io/assets/attachment/n1_screen_rclone/libaudit.so.1
+wget https://streamelody.github.io/assets/attachment/n1_screen_rclone/libpam.so.0
+
+<span class="c"># 移动文件</span>
+<span class="nb">mv </span>screen /usr/bin/
+<span class="nb">mv </span>rclone /usr/bin/
+
+<span class="nb">mv </span>libcap-ng.so.0 /usr/lib/   
+<span class="nb">mv </span>libtinfo.so.5 /usr/lib/ 
+<span class="nb">mv </span>libaudit.so.1 /usr/lib/     
+<span class="nb">mv </span>libpam.so.0 /usr/lib/ 
+
+<span class="c"># 赋予权限</span>
+<span class="nb">chmod </span>777 /usr/bin/screen
+<span class="nb">chmod </span>777 /usr/bin/rclone
+<span class="nb">chmod </span>755 /usr/lib/libcap-ng.so.0   
+<span class="nb">chmod </span>755 /usr/lib/libtinfo.so.5
+<span class="nb">chmod </span>755 /usr/lib/libaudit.so.1    
+<span class="nb">chmod </span>755 /usr/lib/libpam.so.0
+</code></pre></div></div>
+
+<h1 id="安装-openvpn">安装 OpenVPN</h1>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># SSH 登陆小钢炮</span>
+<span class="c"># 1. 安装 entware</span>
+<span class="nb">rm</span> <span class="nt">-rf</span> /opt
+<span class="nb">mkdir</span> /opt
+<span class="nb">cd</span> /opt
+wget <span class="nt">-O</span> - http://bin.entware.net/aarch64-k3.10/installer/alternative.sh | sh
+<span class="c"># 将自带 opkg 改名为 opkg_bak</span>
+<span class="nb">mv</span> /usr/bin/opkg /usr/bin/opkg_bak
+
+<span class="c"># 2. 配置entware环境变量</span>
+vi /etc/profile
+<span class="c"># 直接在 /usr/sbin:\ 这行下直接添加下两行</span>
+/opt/bin:<span class="se">\</span>
+/opt/sbin:<span class="se">\</span>
+<span class="c"># 使配置生效</span>
+<span class="nb">source</span> /etc/profile
+
+<span class="c"># 3. 检查entware环境安装情况看是否报错</span>
+opkg update
+opkg list
+
+<span class="c"># 4. 安装 openvpn </span>
+<span class="c"># 查找 openvpn 软件包</span>
+opkg list|grep openvpn
+
+<span class="c"># 安装 openvpn-nossl</span>
+opkg <span class="nb">install </span>openvpn-openssl
+
+<span class="c"># 查看是否已经安装</span>
+opkg list-installed |grep openvpn-openssl
+
+<span class="c"># 找到一个 .ovpn 配置文件</span>
+<span class="c"># 连接 OpenVPN</span>
+screen 
+/opt/sbin/openvpn /root/tw-hk3.nordvpn.com.tcp.ovpn
+<span class="c"># 输入密码</span>
+Enter Auth Username:shadow_2806@Web.de
+Enter Auth Password:
+<span class="c"># 查看 openvpn 是否连接上</span>
+curl ip.sb
+</code></pre></div></div>
+
+<h1 id="参考文章">参考文章</h1>
+
+<ol>
+  <li><a href="http://rom.nanodm.net/opt/frp/">荒野无灯 frps.ini</a></li>
+  <li><a href="https://www.debian.org/distrib/packages">/ 获取 debian / 软件包</a></li>
+  <li><a href="https://www.right.com.cn/forum/thread-343953-1-1.html">为小钢炮装上entware运行库</a></li>
+</ol>
