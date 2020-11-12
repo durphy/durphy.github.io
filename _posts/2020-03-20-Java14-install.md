@@ -17,7 +17,7 @@ https://www.oracle.com/java/technologies/javase-jdk14-downloads.html
 安装完成后右击“此电脑”，选择属性->高级系统设置->环境变量，在系统变量里新建    
 变量名` JAVA_HOME`    
 变量值 `C:\Program Files\Java\jdk-14`    
-然后找到系统变量里的Path，点击编辑-新建    
+然后找到系统变量里的Path，点击 编辑/新建    
 
 <!--more-->
 

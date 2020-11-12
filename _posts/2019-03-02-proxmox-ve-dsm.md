@@ -3,7 +3,7 @@ title: Proxmox VE 安装群晖的方法
 date: 2019/03/02 09:23:10
 categories: 
 - 博客
-- 随笔
+- 笔记
 tags: 
 - Proxmox
 - NAS

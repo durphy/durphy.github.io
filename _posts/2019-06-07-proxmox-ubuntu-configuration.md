@@ -3,10 +3,9 @@ title: ProxMox 5.4 创建 Ubuntu 虚拟机
 date: 2019/06/07 11:35:16
 categories: 
 - 博客
-- 随笔
+- 教程
 tags: 
 - ProxMox
-- Ubuntu
 - 远程桌面
 - 内网穿透
 ---
