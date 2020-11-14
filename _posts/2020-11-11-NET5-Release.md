@@ -9,7 +9,7 @@ tags:
 .NET 5.0 现已正式发布，这是一个主要版本。该版本引入了 C# 9 和 F# 5 编程语言、提供 Windows ARM64 支持、并进行了一系列的新功能添加和改进。
 
 ​       微软希望 .NET Framework 开发者能够迁移他们的代码和应用到 .NET 5.0 上，为明年发布的 .NET 6.0 将 Xamarin 开发者过渡到统一平台奠定基础。其目标是将所有的 .NET 组件整合到一个产品下，然后用户可以根据需求使用 .NET 的某个部分，而不是单独下载或安装所有内容。
-​       对于[Visual Studio](https://visualstudio.microsoft.com/zh-hans/)用户，需要Visual Studio 16.8或更高的版本才能在Windows上使用.NET 5.0，在MacOS上使用最新版本的Visual Studio for Mac。[Visual Studio Code](https://code.visualstudio.com/)的C#扩展也已经支持.NET5.0和C#9。![dotnet5_platform.png](https://i.loli.net/2020/11/13/tz1Pclh9TB2no8g.png)
+​       对于[Visual Studio](https://visualstudio.microsoft.com/zh-hans/)用户，需要Visual Studio 16.8或更高的版本才能在Windows上使用.NET 5.0，在MacOS上使用最新版本的Visual Studio for Mac。[Visual Studio Code](https://code.visualstudio.com/)的C#扩展也已经支持.NET5.0和C#9。![dotnet5_platform.png](https://i.loli.net/2020/11/14/q398i45AVmoHRTE.png)
 
 [Announcing .NET 5.0](https://devblogs.microsoft.com/dotnet/announcing-net-5-0/)
 
