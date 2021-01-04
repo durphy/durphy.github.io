@@ -125,11 +125,11 @@ Please execute the command: systemctl enable v2ray; systemctl start v2ray
 
 此脚本会自动安装以下文件：
 
-- /etc/v2ray/config.json：配置文件；
-- /usr/bin/v2ray/v2ray：V2Ray 程序；
-- /usr/bin/v2ray/v2ctl：V2Ray 工具；
-- /usr/bin/v2ray/geoip.dat：IP 数据文件
-- /usr/bin/v2ray/geosite.dat：域名数据文件
+- `/etc/v2ray/config.json`：配置文件；
+- `/usr/bin/v2ray/v2ray`：V2Ray 程序；
+- `/usr/bin/v2ray/v2ctl`：V2Ray 工具；
+- `/usr/bin/v2ray/geoip.dat`：IP 数据文件
+- `/usr/bin/v2ray/geosite.dat`：域名数据文件
 
 
 ### 运行
@@ -176,9 +176,11 @@ systemctl stop v2ray
 ### 升级更新
 
 在 VPS，重新执行一遍安装脚本就可以更新了，在更新过程中会自动重启 V2Ray，配置文件保持不变。
+
 ```
 bash install-release.sh
 ```
+
 V2Ray 的更新策略是快速迭代，每周更新(无意外的情况下)。版本号的格式是 `vX.Y.Z`，如 `v2.44.0`。v 是固定的字母 v，version 的首字母；X、Y、Z 都是数字，X 是大版本号，每年更新一个大版本(现在是 v4.Y.Z，V2Ray 已经走到了第四个年头)，Y 是小版本，每周五更新一个小版本。Z 是区分正式版和测试版，Z 是 0 代表着是正式版，不是 0 说明是测试版。例如，v4.7.0 是正式版，v4.7.1 是测试版，建议只使用正式版，不手动指定的情况下 V2Ray 的安装脚本也只会安装最新的正式版。
 
 有些细心的朋友可能会注意到有时候周五 V2Ray 刚发布了一个新版本，次日或过两日又更新一个正式版。出现这种情况是因为周五发布的正式版出现了影响使用严重的 BUG，需要立马发布一个新版本。这种情况比较烦，但是为了保证兼容性、性能优化等又需要保证版本不要太老旧。所以我比较建议在周四更新，选这么一个日子是因为有重大的 BUG 肯定在前面几天就已经修复了，小问题(恐怕都不知道有)的话不会影响使用；而且版本号与最新版相比迟那么一两个也没什么关系。
