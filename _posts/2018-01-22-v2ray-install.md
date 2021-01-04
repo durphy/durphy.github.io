@@ -103,7 +103,7 @@ curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install
 
 安装 V2ray 主程序：
 
-```
+```shell
 bash install-release.sh
 ```
 
@@ -177,7 +177,7 @@ systemctl stop v2ray
 
 在 VPS，重新执行一遍安装脚本就可以更新了，在更新过程中会自动重启 V2Ray，配置文件保持不变。
 
-```
+```shell
 bash install-release.sh
 ```
 
