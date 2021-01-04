@@ -32,7 +32,9 @@ tags:
 ![2019-05-21_130702.jpg](https://i.loli.net/2021/01/04/rO9ywuAf6ZdISxG.jpg)
 
 新建密钥的操作完成后得到如下两个文件，要连接到远程VPS，还需要先在服务器上注册公钥。  
+
 ![2019-05-21_130807.jpg](https://i.loli.net/2021/01/04/EH3LOoYij4AzWwu.jpg)  
+
 公钥和私钥匹配方可连接成功，可以想象成古代的虎符O(∩_∩)O
 # 远程服务器配置
 ### 谷歌云([Google Cloud Platform](https://cloud.google.com/)) 
