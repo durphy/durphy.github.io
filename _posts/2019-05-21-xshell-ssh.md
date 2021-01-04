@@ -19,7 +19,7 @@ tags:
 <div align="center"><img src="https://i.loli.net/2021/01/04/TWc4LgFbPay6mrl.jpg"/></div>
 4.密钥信息设置  
 <div align="center"><img src="https://i.loli.net/2021/01/04/SbpiH4Pu1LrMJaN.jpg"/></div>
-5.保存密钥到本地（公钥，*myid_rsa_2048.pub即公钥文件*），**公钥需要在服务器上注册**  
+5.保存密钥到本地（公钥）*myid_rsa_2048.pub即公钥文件*
 
 <div align="center"><img src="https://i.loli.net/2021/01/04/8wBaoYeT6sqvWry.jpg"/></div>  
 <!--more-->
@@ -31,10 +31,9 @@ tags:
 
 ![2019-05-21_130702.jpg](https://i.loli.net/2021/01/04/rO9ywuAf6ZdISxG.jpg)
 
-新建密钥的操作完成后得到如下两个文件，要连接到远程VPS，还需要先在服务器上注册公钥。
-![2019-05-21_130807.jpg](https://i.loli.net/2021/01/04/EH3LOoYij4AzWwu.jpg)
+新建密钥的操作完成后得到如下两个文件，要连接到远程VPS，还需要先在服务器上注册公钥。  
+![2019-05-21_130807.jpg](https://i.loli.net/2021/01/04/EH3LOoYij4AzWwu.jpg)  
 公钥和私钥匹配方可连接成功，可以想象成古代的虎符O(∩_∩)O
-
 # 远程服务器配置
 ### 谷歌云([Google Cloud Platform](https://cloud.google.com/)) 
 登录[控制台](https://console.cloud.google.com/)，点左上角的导航菜单--计算-Compute Engine--元数据--SSH密钥--修改--添加一项  
