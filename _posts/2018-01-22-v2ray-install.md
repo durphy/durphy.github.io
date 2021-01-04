@@ -134,12 +134,10 @@ Please execute the command: systemctl enable v2ray; systemctl start v2ray
 ### 运行
 
 首次安装完之后，V2Ray 不会自动启动，需要手动运行命令启动 V2Ray:
-
 ```text
-systemctl start v2ray
+bash install-release.sh
 ```
 设置开机自启动 V2Ray:
-
 ```text
 systemctl enable v2ray
 ```
@@ -157,7 +155,6 @@ systemctl status v2ray
    Memory: 6.9M
    CGroup: /system.slice/v2ray.service
            └─1984 /usr/local/bin/v2ray -confdir /usr/local/etc/v2ray/
-
 Aug 16 23:17:13 debian v2ray[1984]: v2ctl> Read config:  /usr/local/etc/v2ray/01_api.json
 Aug 16 23:17:13 debian v2ray[1984]: v2ctl> Read config:  /usr/local/etc/v2ray/02_dns.json
 Aug 16 23:17:13 debian v2ray[1984]: v2ctl> Read config:  /usr/local/etc/v2ray/03_routing.json
@@ -180,7 +177,6 @@ systemctl stop v2ray
 ### 升级更新
 
 在 VPS，重新执行一遍安装脚本就可以更新了，在更新过程中会自动重启 V2Ray，配置文件保持不变。
-
 ```text
 bash install-release.sh
 ```
