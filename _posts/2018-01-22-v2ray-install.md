@@ -170,14 +170,12 @@ Aug 16 23:17:13 debian v2ray[1984]: v2ctl> Read config:  /usr/local/etc/v2ray/09
 Aug 16 23:17:13 debian v2ray[1984]: 2018/01/22 23:17:13 [Warning] v2ray.com/core: V2Ray 4.31.0 start
 lines 1-19/19 (END)
 ```
-
 但是由于此时你还没有为 V2ray 配置，所以咱们还是把它关掉吧：
 
 ```text
 systemctl stop v2ray
 ```
-
-可以使用 systemctl start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行，关于 V2ray 配置，请参考 [v2ray-examples (opens new window)](https://github.com/v2fly/v2ray-examples)内的示例。对于安装脚本，还有更多用法，在此不多说了，可以执行 `bash install-release.sh -h` 看帮助。
+可以使用 systemctl start\|stop\|status\|reload\|restart\|force-reload 控制 V2Ray 的运行，关于 V2ray 配置，请参考 [v2ray-examples (opens new window)](https://github.com/v2fly/v2ray-examples)内的示例。对于安装脚本，还有更多用法，在此不多说了，可以执行 `bash install-release.sh -h` 看帮助。
 
 ### 升级更新
 
@@ -186,7 +184,6 @@ systemctl stop v2ray
 ```text
 bash install-release.sh
 ```
-
 V2Ray 的更新策略是快速迭代，每周更新(无意外的情况下)。版本号的格式是 `vX.Y.Z`，如 `v2.44.0`。v 是固定的字母 v，version 的首字母；X、Y、Z 都是数字，X 是大版本号，每年更新一个大版本(现在是 v4.Y.Z，V2Ray 已经走到了第四个年头)，Y 是小版本，每周五更新一个小版本。Z 是区分正式版和测试版，Z 是 0 代表着是正式版，不是 0 说明是测试版。例如，v4.7.0 是正式版，v4.7.1 是测试版，建议只使用正式版，不手动指定的情况下 V2Ray 的安装脚本也只会安装最新的正式版。
 
 有些细心的朋友可能会注意到有时候周五 V2Ray 刚发布了一个新版本，次日或过两日又更新一个正式版。出现这种情况是因为周五发布的正式版出现了影响使用严重的 BUG，需要立马发布一个新版本。这种情况比较烦，但是为了保证兼容性、性能优化等又需要保证版本不要太老旧。所以我比较建议在周四更新，选这么一个日子是因为有重大的 BUG 肯定在前面几天就已经修复了，小问题(恐怕都不知道有)的话不会影响使用；而且版本号与最新版相比迟那么一两个也没什么关系。
