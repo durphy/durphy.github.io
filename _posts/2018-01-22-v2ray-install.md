@@ -103,9 +103,10 @@ curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install
 
 安装 V2ray 主程序：
 
-```text
+```
 bash install-release.sh
 ```
+
 耐心等待几分钟，看到类似于以下提示就算安装成功了。
 
 ```text
@@ -134,9 +135,7 @@ Please execute the command: systemctl enable v2ray; systemctl start v2ray
 ### 运行
 
 首次安装完之后，V2Ray 不会自动启动，需要手动运行命令启动 V2Ray:
-```text
-bash install-release.sh
-```
+
 设置开机自启动 V2Ray:
 ```text
 systemctl enable v2ray
@@ -177,7 +176,7 @@ systemctl stop v2ray
 ### 升级更新
 
 在 VPS，重新执行一遍安装脚本就可以更新了，在更新过程中会自动重启 V2Ray，配置文件保持不变。
-```text
+```
 bash install-release.sh
 ```
 V2Ray 的更新策略是快速迭代，每周更新(无意外的情况下)。版本号的格式是 `vX.Y.Z`，如 `v2.44.0`。v 是固定的字母 v，version 的首字母；X、Y、Z 都是数字，X 是大版本号，每年更新一个大版本(现在是 v4.Y.Z，V2Ray 已经走到了第四个年头)，Y 是小版本，每周五更新一个小版本。Z 是区分正式版和测试版，Z 是 0 代表着是正式版，不是 0 说明是测试版。例如，v4.7.0 是正式版，v4.7.1 是测试版，建议只使用正式版，不手动指定的情况下 V2Ray 的安装脚本也只会安装最新的正式版。
@@ -187,14 +186,13 @@ V2Ray 的更新策略是快速迭代，每周更新(无意外的情况下)。版
 
 编辑配置文件:
 ```text
- vim /usr/local/etc/v2ray/config.json
+vim /usr/local/etc/v2ray/config.json
 ```
 测试配置文件
 ```text
 vim v2ray -test -config /usr/local/etc/v2ray/config.json
 ```
 更多配置文件[模板](https://github.com/v2fly/v2ray-examples)参考
-
 
 ------
 
