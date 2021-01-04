@@ -103,7 +103,7 @@ curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install
 
 安装 V2ray 主程序：
 
-```shell
+```bash
 bash install-release.sh
 ```
 
