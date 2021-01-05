@@ -102,10 +102,10 @@ curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install
 
 ### 执行安装
 
-安装 V2ray 主程序：
+安装 V2ray 主程序：      
 
 ```text
-bash install-release.sh
+bash install-release.sh    
 ```
 
 耐心等待几分钟，看到类似于以下提示就算安装成功了。
@@ -171,15 +171,15 @@ lines 1-19/19 (END)
 
 ```text
 systemctl stop v2ray
-```    
-  
+```
+
 可以使用 systemctl start\|stop\|status\|reload\|restart\|force-reload 控制 V2Ray 的运行，关于 V2ray 配置，请参考 [v2ray-examples (opens new window)](https://github.com/v2fly/v2ray-examples)内的示例。对于安装脚本，还有更多用法，在此不多说了，可以执行 `bash install-release.sh -h` 看帮助。
 
 ### 升级更新
 
 在 VPS，重新执行一遍安装脚本就可以更新了，在更新过程中会自动重启 V2Ray，配置文件保持不变。
 
-```text
+```
 bash install-release.sh
 ```
 
