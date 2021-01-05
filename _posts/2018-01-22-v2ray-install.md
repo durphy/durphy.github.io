@@ -29,6 +29,7 @@ Sun, 22 Jan 2018 10:10:36 -0500
 ```
 输出结果中的 -0500 代表的是时区为西 5 区，如果转换成东 8 区时间则为 `2018-01-22 23:10:36`。
 如果时间不准确，可以使用 `date --set` 修改时间：
+
 ```text
 sudo date --set="2018-01-22 16:16:23"
 Sun 22 Jan 16:16:23 GMT 2018
@@ -57,7 +58,7 @@ sudo -i
 
 在 Linux 操作系统， V2Ray 的安装有脚本安装、手动安装、编译安装 3 种方式，选择其中一种即可，本指南仅提供使用使用脚本安装的方法，并仅推荐使用脚本安装，该脚本由 V2Ray 官方提供。该脚本仅可以在 Debian 系列或者支持 Systemd 的 Linux 操作系统使用。
 
-**除非你是大佬，或者能够自行处理类似 command not found 的问题，否则请你使用 Debian 8.x 以上或者 Ubuntu 16.04 以上的 Linux 系统。** 本指南默认使用 Debian 10 系统作为示范。
+**除非你是大佬，或者能够自行处理类似 command not found 的问题，否则请你使用 Debian 8.x 以上或者 Ubuntu 16.04 以上的 Linux 系统。** 这里默认使用 Debian 10 系统作为示范。
 
 ### 安装依赖软件
 
@@ -103,7 +104,7 @@ curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install
 
 安装 V2ray 主程序：
 
-```bash
+```text
 bash install-release.sh
 ```
 
@@ -170,14 +171,15 @@ lines 1-19/19 (END)
 
 ```text
 systemctl stop v2ray
-```
+```    
+  
 可以使用 systemctl start\|stop\|status\|reload\|restart\|force-reload 控制 V2Ray 的运行，关于 V2ray 配置，请参考 [v2ray-examples (opens new window)](https://github.com/v2fly/v2ray-examples)内的示例。对于安装脚本，还有更多用法，在此不多说了，可以执行 `bash install-release.sh -h` 看帮助。
 
 ### 升级更新
 
 在 VPS，重新执行一遍安装脚本就可以更新了，在更新过程中会自动重启 V2Ray，配置文件保持不变。
 
-```shell
+```text
 bash install-release.sh
 ```
 
