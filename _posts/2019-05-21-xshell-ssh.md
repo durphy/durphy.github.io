@@ -17,7 +17,10 @@ tags:
 <div align="center"><img src="https://i.loli.net/2021/01/04/joB4ZDpM5G86AhF.jpg"/></div>
 3.生成密钥对  
 <div align="center"><img src="https://i.loli.net/2021/01/04/TWc4LgFbPay6mrl.jpg"/></div>
+<!--more-->
+
 4.密钥信息设置  
+
 <div align="center"><img src="https://i.loli.net/2021/01/04/SbpiH4Pu1LrMJaN.jpg"/></div>
 5.保存密钥到本地（公钥）*myid_rsa_2048.pub即公钥文件*
 
