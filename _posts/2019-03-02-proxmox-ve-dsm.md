@@ -5,7 +5,6 @@ categories:
 - 博客
 - 笔记
 tags: 
-- Proxmox
 - NAS
 - 群晖
 ---

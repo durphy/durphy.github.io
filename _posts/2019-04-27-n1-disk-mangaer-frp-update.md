@@ -6,9 +6,7 @@ categories:
 - 笔记
 tags: 
 - frp
-- N1
-- rclone
-- openvpn
+- 网络穿透
 ---
 
 # 升级 FRP 

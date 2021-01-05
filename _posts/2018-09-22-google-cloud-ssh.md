@@ -5,7 +5,7 @@ categories:
 - VPS
 - 笔记
 tags: 
-- 谷歌云 GCP
+- GCP
 - ssh
 ---
 

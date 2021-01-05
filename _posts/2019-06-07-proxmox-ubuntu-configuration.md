@@ -5,9 +5,8 @@ categories:
 - 博客
 - 教程
 tags: 
-- ProxMox
 - 远程桌面
-- 内网穿透
+- 网络穿透
 ---
 
 # ProxMox VE 相关配置
